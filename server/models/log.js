@@ -8,15 +8,20 @@ const logSchema = new mongoose.Schema({
     action:{
         type:String,
         required:true,
-        enum:["CREATE", "UPDATE", "DELETE"]
+        enum:["Create Task", "Update Task", "Delete Task"]
     },
     taskId:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"Task"
+        ref:"Task",
+        required:true
     },
     updatedContent:{
         type:Object,
-        default:null
+        default:{}
+    },
+    notes:{
+        type:String,
+        default:''
     }
 });
 

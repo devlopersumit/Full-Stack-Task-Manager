@@ -12,6 +12,7 @@ app.use(cors());
 //Database Connection
 connectDB();
 
+// Test route
 app.get('/', (req, res) => {
     res.send('Hello World!')
 });
