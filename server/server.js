@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/database');
+const taskRouter = require('./routes/taskRoutes');
+const logRouter = require('./routes/logRoutes');
 require('dotenv').config();
 
 const app = express();
@@ -12,7 +14,11 @@ app.use(cors());
 //Database Connection
 connectDB();
 
-// Test route
+//Routes
+app.use('/api/tasks', taskRouter);
+app.use('/api/logs', logRouter);
+
+//Test route
 app.get('/', (req, res) => {
     res.send('Hello World!')
 });
