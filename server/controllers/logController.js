@@ -18,7 +18,8 @@ const getLogs = async (req, res) => {
       totalLogs: total
     });
   } catch (error) {
-    res.status(500).json({ error: 'Server error while fetching logs' });
+    console.error('Error fetching logs:', error);
+    res.status(500).json({ message: error.message || 'Server error while fetching logs' });
   }
 };
 
