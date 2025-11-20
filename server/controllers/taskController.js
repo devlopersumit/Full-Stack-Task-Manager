@@ -2,7 +2,7 @@ const Log = require("../models/log");
 const Task = require("../models/task");
 
 
-// Get all tasks with pagination and filterinng
+// Get all tasks with pagination and filtering
 const getTasks = async (req, res) => {
     try {
         const page = parseInt(req.query.page) || 1;
@@ -33,7 +33,8 @@ const getTasks = async (req, res) => {
         });
 
     } catch (error) {
-        res.status(500).json({ message: 'Server error while fetching tasks' })
+        console.error('Error fetching tasks:', error);
+        res.status(500).json({ message: error.message || 'Server error while fetching tasks' });
     }
 };
 
@@ -54,7 +55,8 @@ const createTask = async (req, res) => {
 
         res.status(201).json(task);
     } catch (error) {
-        res.status(500).json({ message: 'Server error while creating task' });
+        console.error('Error creating task:', error);
+        res.status(500).json({ message: error.message || 'Server error while creating task' });
     }
 };
 
@@ -89,7 +91,8 @@ const updateTask = async (req, res) => {
         res.json(task);
 
     } catch (error) {
-        res.status(500).json({ message: 'Server error whle updating task' })
+        console.error('Error updating task:', error);
+        res.status(500).json({ message: error.message || 'Server error while updating task' });
     }
 };
 
@@ -114,7 +117,8 @@ const deleteTask = async (req, res) => {
 
         res.json({ message: 'Task deleted successfully' });
     } catch (error) {
-        res.status(500).json({ error: 'Server error while deleting task' });
+        console.error('Error deleting task:', error);
+        res.status(500).json({ message: error.message || 'Server error while deleting task' });
     }
 };
 
