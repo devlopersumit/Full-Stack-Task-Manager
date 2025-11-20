@@ -1,31 +1,46 @@
 import React from 'react';
+import { useLocation, Link } from 'react-router-dom';
 
 const Header = () => {
-  return (
-    <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-10">
-      <div className="px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-800">
-              Task Manager Dashboard
-            </h1>
-            <p className="text-sm text-gray-500 mt-1">
-              Manage your tasks efficiently
-            </p>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="text-right">
-              <p className="text-sm font-medium text-gray-700">Admin User</p>
-              <p className="text-xs text-gray-500">admin@taskmanager.com</p>
+    const location = useLocation();
+    const isTasksPage = location.pathname === '/';
+    const isAuditLogsPage = location.pathname === '/audit-logs';
+
+    return (
+        <div className="mb-6 sm:mb-8">
+            <div className="mb-4 sm:mb-5">
+                <div className="flex items-center space-x-3">
+                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    <h1 className="text-2xl sm:text-3xl font-bold text-white">
+                        {isTasksPage ? 'Tasks' : 'Audit Logs'}
+                    </h1>
+                </div>
             </div>
-            <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
-              A
+
+            <div className="flex space-x-2 border-b border-[#2d3748] gap-2.5 mb-1.5">
+                <Link
+                    to="/"
+                    className={`px-4 sm:px-5 py-2.5 text-sm sm:text-base font-medium transition-colors ${isTasksPage
+                            ? 'text-white border-b-2 border-blue-400'
+                            : 'text-gray-400 hover:text-gray-300'
+                        }`}
+                >
+                    Tasks
+                </Link>
+                <Link
+                    to="/audit-logs"
+                    className={`px-4 sm:px-5 py-2.5 text-sm sm:text-base font-medium transition-colors ${isAuditLogsPage
+                            ? 'text-white border-b-2 border-blue-400'
+                            : 'text-gray-400 hover:text-gray-300'
+                        }`}
+                >
+                    Audit Logs
+                </Link>
             </div>
-          </div>
         </div>
-      </div>
-    </header>
-  );
+    );
 };
 
 export default Header;
