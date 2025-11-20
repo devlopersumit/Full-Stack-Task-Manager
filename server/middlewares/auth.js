@@ -12,7 +12,7 @@ const userAuth = (req, res, next) => {
         const credentials = Buffer.from(base64Credentials, 'base64').toString('utf-8');
         const [username, password] = credentials.split(':');
 
-        if(username === process.env.AUTH_USER && password === AUTH_PASS) {
+        if(username === process.env.AUTH_USER && password === process.env.AUTH_PASS) {
             next();
         } else {
             return res.status(401).json({
@@ -20,7 +20,8 @@ const userAuth = (req, res, next) => {
             });
         }
     }catch(err) {
-        res.status(500).json('Something went wrong' || err.message)
+        console.error('Auth error:', err);
+        res.status(500).json({ message: err.message || 'Something went wrong' });
     }
 };
 
