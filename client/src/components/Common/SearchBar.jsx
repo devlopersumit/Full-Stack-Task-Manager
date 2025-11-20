@@ -17,13 +17,13 @@ const SearchBar = ({ onSearch, placeholder = "Search tasks..." }) => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
       </div>
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="block w-full pl-12 pr-12 py-3 border border-[#3d4857] rounded-lg leading-5 bg-[#1a202c] text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 shadow-sm hover:border-[#4d5967]"
-        placeholder={placeholder}
-      />
+            <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="block w-full pl-12 pr-12 py-3.5 border border-[#3d4857] rounded-lg leading-5 bg-[#1a202c] text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 shadow-sm hover:border-[#4d5967] text-base"
+                placeholder={placeholder}
+            />
       {searchTerm && (
         <button
           onClick={() => setSearchTerm('')}
