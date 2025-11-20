@@ -5,7 +5,6 @@ export const sanitizeInput = (input) => {
   return input
     .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
     .replace(/<[^>]*>/g, '')
-    .trim();
 };
 
 // Validate task input

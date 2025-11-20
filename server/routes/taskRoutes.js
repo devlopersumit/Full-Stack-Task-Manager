@@ -5,15 +5,15 @@ const { validateTask } = require('../middlewares/validation');
 const taskRouter = express.Router();
 
 // Get all tasks
-taskRouter.get('/', userAuth, getTasks);
+taskRouter.get('/', getTasks);
 
 // Create a task
-taskRouter.post('/', userAuth, validateTask, createTask);
+taskRouter.post('/', validateTask, createTask);
 
 // Update a task
-taskRouter.put('/:id', userAuth, validateTask, updateTask);
+taskRouter.put('/:id', validateTask, updateTask);
 
 // Delete a task
-taskRouter.delete('/:id', userAuth, deleteTask);
+taskRouter.delete('/:id', deleteTask);
 
 module.exports = taskRouter;

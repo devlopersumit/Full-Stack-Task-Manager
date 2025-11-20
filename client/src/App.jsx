@@ -1,13 +1,20 @@
-import React from 'react'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout/Layout';
+import TasksPage from './pages/TasksPage';
+import AuditLogsPage from './pages/AuditLogsPage';
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <h1 class="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-    </div>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<TasksPage />} />
+          <Route path="audit-logs" element={<AuditLogsPage />} />
+        </Route>
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

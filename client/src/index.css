@@ -12,6 +12,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #1a1f2e;
+  color: #e2e8f0;
 }
 
 ::-webkit-scrollbar {
@@ -19,16 +21,15 @@ body {
   height: 8px;
 }
 
-
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #1a1f2e;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #4a5568;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #718096;
 }
