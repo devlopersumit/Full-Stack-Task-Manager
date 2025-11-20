@@ -1,13 +1,11 @@
 const { sanitizeInput } = require("../utils/sanitize");
 
 const validateTask = (req, res, next) => {
-    const { title, description } = req.body;
+    let { title, description } = req.body;
 
-    //Sanitize Inputs
     title = sanitizeInput(title);
     description = sanitizeInput(description);
 
-    //Validation Checks
     if(!title || title.trim() === '') {
         return res.status(400).json({message:'Title is required'});
     }
@@ -24,7 +22,6 @@ const validateTask = (req, res, next) => {
         return res.status(400).json({message:'Description cannot exceed 500 characters'});
     }
 
-    // Send Santized input to req.body
     req.body.title = title;
     req.body.description = description;
 
